@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@color/window_background"
+    tools:context=".activity.AppUpdateActivity">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="9"
+        android:background="@drawable/gradient_def_linear_land"
+        android:elevation="2dp">
+
+
+            <ImageView
+                android:id="@+id/update_icon"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:padding="@dimen/activity_horizontal_margin"
+                android:src="@drawable/update_icon"/>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:orientation="vertical"
+            android:layout_toRightOf="@id/update_icon"
+            android:layout_height="match_parent"
+            android:gravity="center">
+
+            <TextView
+                android:id="@+id/text_first_line"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/activity_update_first_line"
+                android:padding="@dimen/activity_horizontal_margin"
+                android:layout_toRightOf="@id/update_icon"
+                android:textAlignment="center"
+                android:textColor="@color/primary_text_inverse"
+                android:textSize="24sp"
+                android:layout_above="@id/text_second_line"
+                />
+
+            <TextView
+                android:id="@+id/text_second_line"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:padding="@dimen/activity_horizontal_margin"
+                android:layout_toRightOf="@id/update_icon"
+                android:textColor="@color/primary_text_inverse"
+                android:text="@string/activity_update_second_line"
+                android:layout_alignParentBottom="true"/>
+        </LinearLayout>
+
+    </RelativeLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:orientation="vertical"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:background="@drawable/gradient_grey_linear"
+        >
+
+        <TextView
+            android:id="@+id/loading_text"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:paddingLeft="@dimen/activity_horizontal_margin"
+            android:text="@string/activity_update_loading_text"/>
+
+    </LinearLayout>
+
+</LinearLayout>

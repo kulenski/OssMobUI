@@ -1,0 +1,10 @@
+<resources>
+    <string name="app_name">OssMobUI</string>
+
+    <string name="dummy_button">Dummy Button</string>
+    <string name="dummy_content">DUMMY\nCONTENT</string>
+    <string name="activity_loading_text">Зареждане . . .</string>
+    <string name="activity_update_first_line">НОВА ВЕРСИЯ!</string>
+    <string name="activity_update_second_line">В момента се изтегля последната версия. След изтеглянето ще се появи прозорец за инсталация.\n\nМоля изчакайте...</string>
+    <string name="activity_update_loading_text">0 kb.</string>
+</resources>
