@@ -7,6 +7,57 @@
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
+    android:background="@drawable/gradient_def_radial"
     tools:context=".activity.LoginActivity">
 
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/activity_vertical_margin"
+        android:orientation="vertical"
+        android:layout_centerInParent="true">
+
+        <ImageView
+            android:id="@+id/logo"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:padding="@dimen/activity_horizontal_margin"
+            />
+
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="text"
+            android:ems="10"
+            android:id="@+id/username"
+            android:textColor="@color/primary_text_inverse"
+            android:textColorHint="@color/white_semitransparent"
+            android:hint="@string/activity_login_username_hint" />
+
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="textPassword"
+            android:ems="10"
+            android:id="@+id/password"
+            android:textColor="@color/primary_text_inverse"
+            android:textColorHint="@color/white_semitransparent"
+            android:hint="@string/activity_login_password_hint" />
+
+        <CheckBox
+            android:text="@string/activity_login_rememberme_text"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/rememberMe"
+            android:textColor="@color/primary_text_inverse"
+            android:checked="true" />
+
+        <Button
+            android:text="@string/activity_login_btnlogin_text"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/btnLogin"
+            />
+
+    </LinearLayout>
 </RelativeLayout>

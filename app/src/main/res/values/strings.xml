@@ -7,4 +7,8 @@
     <string name="activity_update_first_line">НОВА ВЕРСИЯ!</string>
     <string name="activity_update_second_line">В момента се изтегля последната версия. След изтеглянето ще се появи прозорец за инсталация.\n\nМоля изчакайте...</string>
     <string name="activity_update_loading_text">0 kb.</string>
+    <string name="activity_login_username_hint">Потребителско име</string>
+    <string name="activity_login_password_hint">Парола</string>
+    <string name="activity_login_rememberme_text">Запомни ме</string>
+    <string name="activity_login_btnlogin_text">Вход</string>
 </resources>

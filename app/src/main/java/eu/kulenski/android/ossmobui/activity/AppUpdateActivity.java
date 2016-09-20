@@ -1,8 +1,11 @@
 package eu.kulenski.android.ossmobui.activity;
 
 import android.app.Activity;
+import android.content.Context;
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.View;
 import android.view.animation.AccelerateDecelerateInterpolator;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
@@ -21,5 +24,14 @@ public class AppUpdateActivity extends AppCompatActivity {
 
         ImageView mUpdateIcon = (ImageView)findViewById(R.id.update_icon);
         mUpdateIcon.startAnimation(AnimationUtils.loadAnimation(this,R.anim.rotate_animation));
+
+        final Context mContext = this;
+
+        mUpdateIcon.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(mContext,LoginActivity.class));
+            }
+        });
     }
 }
