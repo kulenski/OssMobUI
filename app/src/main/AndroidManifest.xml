@@ -23,8 +23,8 @@
         <activity android:name=".activity.FirstSetupActivity" />
         <activity android:name=".activity.AppUpdateActivity" android:theme="@style/FullscreenTheme" />
         <activity android:name=".activity.MainActivity" />
-        <activity android:name=".activity.network.MainActivity" />
-        <activity android:name=".activity.network.MapActivity" />
+        <activity android:name=".activity.network.NetworkMainActivity" />
+        <activity android:name=".activity.network.NetworkMapActivity" />
     </application>
 
 </manifest>

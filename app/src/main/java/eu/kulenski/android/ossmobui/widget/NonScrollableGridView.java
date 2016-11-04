@@ -1,4 +1,4 @@
-package eu.kulenski.android.ossmobui.activity.widget;
+package eu.kulenski.android.ossmobui.widget;
 
 import android.content.Context;
 import android.util.AttributeSet;

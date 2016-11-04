@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <TextView
+        android:id="@+id/title"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Section Title"
+        android:padding="10dp"
+        android:textSize="18sp"
+        android:textColor="@color/primary_text"/>
+
+    <eu.kulenski.android.ossmobui.widget.NonScrollableGridView
+        android:id="@+id/list"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:numColumns="@integer/recycler_subgrid_columns">
+
+    </eu.kulenski.android.ossmobui.widget.NonScrollableGridView>
+
+</LinearLayout>

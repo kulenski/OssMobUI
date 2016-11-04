@@ -5,7 +5,7 @@ import android.os.Bundle;
 
 import eu.kulenski.android.ossmobui.R;
 
-public class MapActivity extends AppCompatActivity {
+public class NetworkMapActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
