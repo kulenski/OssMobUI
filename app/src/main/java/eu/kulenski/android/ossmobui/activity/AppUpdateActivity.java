@@ -14,6 +14,7 @@ import android.view.animation.RotateAnimation;
 import android.widget.ImageView;
 
 import eu.kulenski.android.ossmobui.R;
+import eu.kulenski.android.ossmobui.activity.network.*;
 
 public class AppUpdateActivity extends AppCompatActivity {
 
@@ -30,7 +31,7 @@ public class AppUpdateActivity extends AppCompatActivity {
         mUpdateIcon.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(mContext,LoginActivity.class));
+                startActivity(new Intent(mContext, eu.kulenski.android.ossmobui.activity.network.MainActivity.class));
             }
         });
     }
