@@ -6,6 +6,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.GridView;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 
@@ -33,11 +34,14 @@ public class NetworkMenuAdapter extends RecyclerView.Adapter<NetworkMenuAdapter.
 
         public TextView mTitle;
         public GridView mGrid;
+        public ImageView mBackground;
 
         public ViewHolder(View itemView) {
             super(itemView);
             mTitle = (TextView) itemView.findViewById(R.id.title);
             mGrid = (GridView) itemView.findViewById(R.id.list);
+            mBackground = (ImageView) itemView.findViewById(R.id.card_background);
+
         }
     }
 
@@ -57,6 +61,13 @@ public class NetworkMenuAdapter extends RecyclerView.Adapter<NetworkMenuAdapter.
 
         holder.mTitle.setText(mCurrentItem.getName());
         holder.mGrid.setAdapter(mAdapter);
+
+        String mBackground = mCurrentItem.getBackground();
+        if(mBackground != null && mBackground.length() > 0) {
+            int resourceId = mContext.getResources().getIdentifier(mBackground, "drawable", mContext.getPackageName());
+            holder.mBackground.setImageResource(resourceId);
+        }
+
     }
 
     @Override

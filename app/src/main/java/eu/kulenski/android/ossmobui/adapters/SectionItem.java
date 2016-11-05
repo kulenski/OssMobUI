@@ -9,14 +9,16 @@ import java.util.ArrayList;
 public class SectionItem {
 
     private String mName;
+    private String mBackground;
     private ArrayList<SectionSubItem> mSubItems = new ArrayList<>();
 
-    public SectionItem(String name ,ArrayList<SectionSubItem> list) {
+    public SectionItem(String name ,String background ,ArrayList<SectionSubItem> list) {
         if(list != null) {
             this.mSubItems = list;
         }
 
-       this.mName = name;
+        this.mName = name;
+        this.mBackground = background;
     }
 
     public ArrayList<SectionSubItem> getSubItems() { return this.mSubItems; }
@@ -27,4 +29,5 @@ public class SectionItem {
     }
 
     public String getName() {return this.mName; }
+    public String getBackground() { return this.mBackground; }
 }

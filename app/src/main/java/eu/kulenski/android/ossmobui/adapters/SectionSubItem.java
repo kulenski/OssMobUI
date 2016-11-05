@@ -9,16 +9,19 @@ public class SectionSubItem {
     private int mId;
     private String mName;
     private String mAction;
+    private String mDescription;
 
-    public SectionSubItem(String name, String action) {
+    public SectionSubItem(String name, String action, String description) {
         if(name == null || action == null )
             throw  new IllegalArgumentException(this.NOT_INITIALIZED);
         this.mId = 0;
         this.mName = name;
         this.mAction = action;
+        this.mDescription = description;
     }
 
     int getId() {return this.mId; }
     String getName() {return this.mName; }
     String getAction() { return this.mAction; }
+    String getDescription() { return this.mDescription; }
 }

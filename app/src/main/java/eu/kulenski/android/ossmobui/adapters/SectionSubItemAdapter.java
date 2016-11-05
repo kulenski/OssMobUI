@@ -1,14 +1,15 @@
 package eu.kulenski.android.ossmobui.adapters;
 
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.support.design.widget.Snackbar;
+import android.support.v7.app.AlertDialog;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import java.util.ArrayList;
 
@@ -21,7 +22,7 @@ import eu.kulenski.android.ossmobui.R;
 public class SectionSubItemAdapter extends BaseAdapter {
     private ArrayList<SectionSubItem> mList;
     private Context mContext;
-    private final String ACTION_NOT_SUPPORTED = "Тази функционалност не е налична!";
+    private final String ACTION_NOT_SUPPORTED = " функция не е налична!";
 
     SectionSubItemAdapter(ArrayList<SectionSubItem> list, Context ctx) {
         this.mList = list;
@@ -55,24 +56,51 @@ public class SectionSubItemAdapter extends BaseAdapter {
         convertView.setOnClickListener(new View.OnClickListener() {
                                            @Override
                                            public void onClick(View v) {
-                                               performAction(mList.get(position).getAction(), v);
+                                               performAction(mList.get(position).getAction(),mList.get(position).getName(), v);
                                            }
                                        }
         );
+
+        convertView.setOnLongClickListener(new View.OnLongClickListener() {
+            @Override
+            public boolean onLongClick(View v) {
+                showHelperDialog(mList.get(position).getName(),mList.get(position).getDescription());
+                return false;
+            }
+        });
 
         return convertView;
     }
 
 
-    private void performAction(String actionClass, View parentView) {
+    private void performAction(String actionClass,String name, View parentView) {
         try {
             Class mClass = Class.forName(actionClass);
             Intent mIntent = new Intent(mContext,mClass);
             mContext.startActivity(mIntent);
         } catch(ClassNotFoundException e) {
-            Snackbar.make(parentView,this.ACTION_NOT_SUPPORTED,Snackbar.LENGTH_SHORT).show();
-            //Toast.makeText(mContext,this.ACTION_NOT_SUPPORTED,Toast.LENGTH_SHORT).show();
+            String message = "'" +name+ "'" + this.ACTION_NOT_SUPPORTED;
+            Snackbar.make(parentView,message,Snackbar.LENGTH_LONG).show();
         }
+
+    }
+
+    private void showHelperDialog(String title, String message) {
+        String finalMessage = message != null ? message : "Няма допълнително описание за тази функция.";
+
+        AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(mContext);
+        alertDialogBuilder.setTitle(title);
+        alertDialogBuilder.setMessage(finalMessage);
+
+        alertDialogBuilder.setPositiveButton("ДОБРЕ", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int arg1) {
+                dialog.dismiss();
+            }
+        });
+
+        AlertDialog alertDialog = alertDialogBuilder.create();
+        alertDialog.show();
 
     }
 }
