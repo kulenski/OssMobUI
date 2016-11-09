@@ -1,4 +1,5 @@
 package eu.kulenski.android.ossmobui.activity.network;
+// this is a test
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
