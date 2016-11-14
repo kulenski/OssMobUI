@@ -1,5 +1,7 @@
 package eu.kulenski.android.ossmobui.adapters;
 
+import android.view.View;
+
 /**
  * Created by kulenski on 4.11.2016 г..
  */
@@ -10,6 +12,7 @@ public class SectionSubItem {
     private String mName;
     private String mAction;
     private String mDescription;
+    private View mView;
 
     public SectionSubItem(String name, String action, String description) {
         if(name == null || action == null )
@@ -18,6 +21,7 @@ public class SectionSubItem {
         this.mName = name;
         this.mAction = action;
         this.mDescription = description;
+
     }
 
     int getId() {return this.mId; }
