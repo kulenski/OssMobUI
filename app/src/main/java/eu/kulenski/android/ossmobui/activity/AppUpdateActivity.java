@@ -26,7 +26,7 @@ public class AppUpdateActivity extends AppCompatActivity {
         mUpdateIcon.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(mContext, NetworkMainActivity.class));
+                startActivity(new Intent(mContext, MainActivity.class));
             }
         });
     }
