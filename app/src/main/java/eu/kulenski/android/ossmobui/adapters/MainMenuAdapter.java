@@ -11,14 +11,11 @@ import android.view.ViewGroup;
 import java.util.ArrayList;
 
 
-import eu.kulenski.android.ossmobui.model.MainAppItem;
-import eu.kulenski.android.ossmobui.model.MainNotificationsHeaderItem;
-import eu.kulenski.android.ossmobui.model.NetworkAppItem;
-import eu.kulenski.android.ossmobui.model.BaseItem;
-import eu.kulenski.android.ossmobui.model.NetworkHeaderItem;
-import eu.kulenski.android.ossmobui.viewmodel.CardItemViewHoler;
+import eu.kulenski.android.ossmobui.model.BaseViewItem;
+import eu.kulenski.android.ossmobui.model.MainAppViewItem;
+import eu.kulenski.android.ossmobui.model.MainNotificationsViewItem;
+import eu.kulenski.android.ossmobui.viewmodel.CardAppViewHolder;
 import eu.kulenski.android.ossmobui.viewmodel.MainNotificationsViewHolder;
-import eu.kulenski.android.ossmobui.viewmodel.TextHeaderViewHolder;
 
 /**
  * Created by Tsvetan.Kulenski on 17.11.2016 г..
@@ -31,7 +28,7 @@ public class MainMenuAdapter extends FlexibleGridRecyclerAdapter {
     private Context mContext;
 
     public MainMenuAdapter(@NonNull Context ctx, @NonNull RecyclerView recyclerView,
-                           @NonNull ArrayList<BaseItem> itemsList, int headerResourceId, int itemResourceId) {
+                           @NonNull ArrayList<BaseViewItem> itemsList, int headerResourceId, int itemResourceId) {
         super(ctx, recyclerView, itemsList, headerResourceId, itemResourceId);
         mHeaderResourceId = headerResourceId;
         mItemResourceId = itemResourceId;
@@ -40,14 +37,14 @@ public class MainMenuAdapter extends FlexibleGridRecyclerAdapter {
 
     @Override
     public RecyclerView.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        if(viewType == BaseItem.TYPE_HEADER) {
+        if(viewType == BaseViewItem.TYPE_HEADER) {
             View v = LayoutInflater.from(parent.getContext())
                     .inflate(mHeaderResourceId, parent, false);
             return new MainNotificationsViewHolder(v,mContext);
         } else {
             View v = LayoutInflater.from(parent.getContext())
                     .inflate(mItemResourceId, parent, false);
-            return new CardItemViewHoler(v,mContext);
+            return new CardAppViewHolder(v,mContext);
         }
     }
 
@@ -55,14 +52,14 @@ public class MainMenuAdapter extends FlexibleGridRecyclerAdapter {
     public void onBindViewHolder(RecyclerView.ViewHolder holder, int position) {
         Log.d("Bla","Bla");
         if(isHeaderItem(position)) {
-            if(mList.get(position) instanceof MainNotificationsHeaderItem) {
-                ((MainNotificationsViewHolder)holder).title.setText(((MainNotificationsHeaderItem) mList.get(position)).title);
+            if(mList.get(position) instanceof MainNotificationsViewItem) {
+                ((MainNotificationsViewHolder)holder).title.setText(((MainNotificationsViewItem) mList.get(position)).title);
             }
         } else {
-            if(mList.get(position) instanceof MainAppItem) {
-                ((CardItemViewHoler)holder).title.setText(((MainAppItem) mList.get(position)).title);
-                ((CardItemViewHoler)holder).description.setText(((MainAppItem) mList.get(position)).description);
-                //((CardItemViewHoler)holder).icon.setImageResource(((NetworkAppItem) mList.get(position)).iconResourceId);
+            if(mList.get(position) instanceof MainAppViewItem) {
+                ((CardAppViewHolder)holder).title.setText(((MainAppViewItem) mList.get(position)).title);
+                ((CardAppViewHolder)holder).description.setText(((MainAppViewItem) mList.get(position)).description);
+                //((CardAppViewHolder)holder).icon.setImageResource(((NetworkAppViewItem) mList.get(position)).iconResourceId);
             }
         }
     }

@@ -13,9 +13,11 @@ import eu.kulenski.android.ossmobui.R;
 public class TextHeaderViewHolder extends BaseHeaderViewHolder {
     private Context mContext;
     public TextView title;
+    public View view;
 
     public TextHeaderViewHolder(View itemView, Context ctx) {
         super(itemView);
+        view = itemView;
         mContext = ctx;
         title = (TextView) itemView.findViewById(R.id.title);
     }

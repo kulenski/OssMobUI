@@ -11,13 +11,15 @@ import java.util.ArrayList;
 import eu.kulenski.android.ossmobui.R;
 import eu.kulenski.android.ossmobui.adapters.MainMenuAdapter;
 import eu.kulenski.android.ossmobui.managers.FlexibleGridLayoutManager;
-import eu.kulenski.android.ossmobui.model.BaseItem;
-import eu.kulenski.android.ossmobui.model.NetworkAppItem;
-import eu.kulenski.android.ossmobui.model.NetworkHeaderItem;
+import eu.kulenski.android.ossmobui.model.BaseViewItem;
+import eu.kulenski.android.ossmobui.model.MainAppViewItem;
+import eu.kulenski.android.ossmobui.model.MainNotificationsViewItem;
+import eu.kulenski.android.ossmobui.model.NetworkAppViewItem;
+import eu.kulenski.android.ossmobui.model.NetworkHeaderViewItem;
 
 public class MainActivity extends AppCompatActivity {
 
-    private ArrayList<BaseItem> mList = null;
+    private ArrayList<BaseViewItem> mList = null;
     private MainMenuAdapter mAdapter = null;
     private FlexibleGridLayoutManager mLayoutManager = null;
 
@@ -33,38 +35,27 @@ public class MainActivity extends AppCompatActivity {
         RecyclerView mRecyclerView = (RecyclerView) findViewById(R.id.recyclerView);
         mLayoutManager = new FlexibleGridLayoutManager(this,getResources().getInteger(R.integer.recycler_subgrid_columns),R.integer.recycler_subgrid_columns);
         mRecyclerView.setLayoutManager(mLayoutManager);
-        mAdapter = new MainMenuAdapter(getApplicationContext(), mRecyclerView, mList, R.layout.item_network_textheader, R.layout.item_network_appitem);
+        mAdapter = new MainMenuAdapter(getApplicationContext(), mRecyclerView, mList, R.layout.item_main_notification_bar, R.layout.item_main_appcard);
         mRecyclerView.setAdapter(mAdapter);
 
     }
 
     private void generateHeaderItem(@NonNull String title) {
         if(mList == null) mList = new ArrayList<>();
-        mList.add(new NetworkHeaderItem(title));
+        mList.add(new MainNotificationsViewItem(title));
     }
 
     private void generatePlainItem(@NonNull String title, @NonNull String description, int iconResourceId, String action) {
         if(mList == null) mList = new ArrayList<>();
-        mList.add(new NetworkAppItem(title, description, iconResourceId,action));
+        mList.add(new MainAppViewItem(title, description, iconResourceId,action));
     }
 
     private void prepareAdapterItems() {
-        generateHeaderItem("Общи");
-        generatePlainItem("Дървовидно търсене", "Описание",0,"");
-        generatePlainItem("Карта","Описание",0,"");
-        generatePlainItem("Бързо търсене", "Описание",0,"");
-        generatePlainItem("Сканирай баркод", "Описание",0,"");
-        generatePlainItem("Създаване на CI", "Описание",0,"");
-        generateHeaderItem("Оптична мрежа");
-        generatePlainItem("Търсене", "",0,"");
-        generatePlainItem("Създаване", "",0,"");
-        generateHeaderItem("Канална мрежа");
-        generatePlainItem("Търсене", "",0,"");
-        generatePlainItem("Създаване", "",0,"");
-        generateHeaderItem("Локации");
-        generatePlainItem("Търсене", "",0,"");
-        generatePlainItem("Създаване", "",0,"");
+        generateHeaderItem("Нямате нови известия");
+        generatePlainItem("Мрежата", "Приложения за работа в мрежата",0,"");
+        generatePlainItem("История", "Последни действия",0,"");
     }
+
 
 
 }

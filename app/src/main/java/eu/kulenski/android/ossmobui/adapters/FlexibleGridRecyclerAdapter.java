@@ -9,7 +9,7 @@ import android.view.ViewGroup;
 import java.util.ArrayList;
 
 import eu.kulenski.android.ossmobui.managers.FlexibleGridLayoutManager;
-import eu.kulenski.android.ossmobui.model.BaseItem;
+import eu.kulenski.android.ossmobui.model.BaseViewItem;
 
 /**
  * Created by Tsvetan.Kulenski on 17.11.2016 г..
@@ -17,12 +17,11 @@ import eu.kulenski.android.ossmobui.model.BaseItem;
 
 public abstract class FlexibleGridRecyclerAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
 
-    //protected Context mContext;
-    protected ArrayList<BaseItem> mList;
+    protected ArrayList<BaseViewItem> mList;
 
     public FlexibleGridRecyclerAdapter(@NonNull Context ctx,
                                        @NonNull RecyclerView recyclerView,
-                                       @NonNull ArrayList<BaseItem> itemsList,
+                                       @NonNull ArrayList<BaseViewItem> itemsList,
                                        int headerResourceId,
                                        int itemResourceId) {
 
@@ -31,14 +30,10 @@ public abstract class FlexibleGridRecyclerAdapter extends RecyclerView.Adapter<R
         layoutManager.setSpanSizeLookup(new GridLayoutManager.SpanSizeLookup() {
             @Override
             public int getSpanSize(int position) {
-                //Log.d("BlaBla",(mList.get(position) instanceof NetworkHeaderItem) ?
-                //        ((NetworkHeaderItem)mList.get(position)).title : ((NetworkAppItem)mList.get(position)).title
-                //        + " " +String.valueOf(isHeaderItem(position)));
                 return isHeaderItem(position) ? layoutManager.getSpanCount() : 1;
             }
         });
 
-        //mContext = ctx;
         mList = itemsList;
     }
 
@@ -61,6 +56,6 @@ public abstract class FlexibleGridRecyclerAdapter extends RecyclerView.Adapter<R
     }
 
     protected boolean isHeaderItem(int position) {
-        return mList.get(position).getItemType() == BaseItem.TYPE_HEADER;
+        return mList.get(position).getItemType() == BaseViewItem.TYPE_HEADER;
     }
 }
