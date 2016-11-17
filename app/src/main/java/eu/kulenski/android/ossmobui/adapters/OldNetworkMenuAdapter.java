@@ -18,12 +18,12 @@ import eu.kulenski.android.ossmobui.R;
  * Created by Tsvetan.Kulenski on 4.11.2016 г..
  */
 
-public class NetworkMenuAdapter extends RecyclerView.Adapter<NetworkMenuAdapter.ViewHolder> {
+public class OldNetworkMenuAdapter extends RecyclerView.Adapter<OldNetworkMenuAdapter.ViewHolder> {
 
     private ArrayList<SectionItem> mDataset;
     private Context mContext;
 
-    public NetworkMenuAdapter(Context ctx,ArrayList<SectionItem> dataset) {
+    public OldNetworkMenuAdapter(Context ctx, ArrayList<SectionItem> dataset) {
         if(dataset == null) throw new IllegalArgumentException("");
         this.mDataset = dataset;
         this.mContext = ctx;
@@ -46,7 +46,7 @@ public class NetworkMenuAdapter extends RecyclerView.Adapter<NetworkMenuAdapter.
     }
 
     @Override
-    public NetworkMenuAdapter.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+    public OldNetworkMenuAdapter.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         // create a new view
         View v = LayoutInflater.from(parent.getContext())
                 .inflate(R.layout.content_network_main_recycler_item, parent, false);

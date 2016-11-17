@@ -10,27 +10,23 @@ import android.view.ViewGroup;
 
 import java.util.ArrayList;
 
-
-import eu.kulenski.android.ossmobui.model.MainAppItem;
-import eu.kulenski.android.ossmobui.model.MainNotificationsHeaderItem;
-import eu.kulenski.android.ossmobui.model.NetworkAppItem;
 import eu.kulenski.android.ossmobui.model.BaseItem;
+import eu.kulenski.android.ossmobui.model.NetworkAppItem;
 import eu.kulenski.android.ossmobui.model.NetworkHeaderItem;
 import eu.kulenski.android.ossmobui.viewmodel.CardItemViewHoler;
 import eu.kulenski.android.ossmobui.viewmodel.MainNotificationsViewHolder;
 import eu.kulenski.android.ossmobui.viewmodel.TextHeaderViewHolder;
 
 /**
- * Created by Tsvetan.Kulenski on 17.11.2016 г..
+ * Created by kulenski on 17.11.2016 г..
  */
 
-public class MainMenuAdapter extends FlexibleGridRecyclerAdapter {
-
+public class NetworkMainMenuAdapter extends FlexibleGridRecyclerAdapter {
     private int mHeaderResourceId;
     private int mItemResourceId;
     private Context mContext;
 
-    public MainMenuAdapter(@NonNull Context ctx, @NonNull RecyclerView recyclerView,
+    public NetworkMainMenuAdapter(@NonNull Context ctx, @NonNull RecyclerView recyclerView,
                            @NonNull ArrayList<BaseItem> itemsList, int headerResourceId, int itemResourceId) {
         super(ctx, recyclerView, itemsList, headerResourceId, itemResourceId);
         mHeaderResourceId = headerResourceId;
@@ -55,13 +51,13 @@ public class MainMenuAdapter extends FlexibleGridRecyclerAdapter {
     public void onBindViewHolder(RecyclerView.ViewHolder holder, int position) {
         Log.d("Bla","Bla");
         if(isHeaderItem(position)) {
-            if(mList.get(position) instanceof MainNotificationsHeaderItem) {
-                ((MainNotificationsViewHolder)holder).title.setText(((MainNotificationsHeaderItem) mList.get(position)).title);
+            if(mList.get(position) instanceof NetworkHeaderItem) {
+                ((TextHeaderViewHolder)holder).title.setText(((NetworkHeaderItem) mList.get(position)).title);
             }
         } else {
-            if(mList.get(position) instanceof MainAppItem) {
-                ((CardItemViewHoler)holder).title.setText(((MainAppItem) mList.get(position)).title);
-                ((CardItemViewHoler)holder).description.setText(((MainAppItem) mList.get(position)).description);
+            if(mList.get(position) instanceof NetworkAppItem) {
+                ((CardItemViewHoler)holder).title.setText(((NetworkAppItem) mList.get(position)).title);
+                ((CardItemViewHoler)holder).description.setText(((NetworkAppItem) mList.get(position)).description);
                 //((CardItemViewHoler)holder).icon.setImageResource(((NetworkAppItem) mList.get(position)).iconResourceId);
             }
         }

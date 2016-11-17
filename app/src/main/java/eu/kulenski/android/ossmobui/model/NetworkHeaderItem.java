@@ -6,10 +6,10 @@ import android.support.annotation.NonNull;
  * Created by Tsvetan.Kulenski on 17.11.2016 г..
  */
 
-public class ExampleTextViewHeaderItem extends BaseHeaderItem {
+public class NetworkHeaderItem extends BaseHeaderItem {
     public String title;
 
-    public ExampleTextViewHeaderItem(@NonNull String title) {
+    public NetworkHeaderItem(@NonNull String title) {
         this.title = title;
     }
 }
