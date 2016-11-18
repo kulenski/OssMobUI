@@ -14,9 +14,9 @@ import android.view.ViewGroup;
 
 import java.util.ArrayList;
 
-import eu.kulenski.android.ossmobui.model.BaseViewItem;
 import eu.kulenski.android.ossmobui.model.NetworkAppViewItem;
 import eu.kulenski.android.ossmobui.model.NetworkHeaderViewItem;
+import eu.kulenski.android.ossmobui.model.ViewItem;
 import eu.kulenski.android.ossmobui.viewmodel.CardAppViewHolder;
 import eu.kulenski.android.ossmobui.viewmodel.TextHeaderViewHolder;
 
@@ -31,7 +31,7 @@ public class NetworkMainMenuAdapter extends FlexibleGridRecyclerAdapter {
     private Context mContext;
 
     public NetworkMainMenuAdapter(@NonNull Context ctx, @NonNull RecyclerView recyclerView,
-                                  @NonNull ArrayList<BaseViewItem> itemsList, int headerResourceId, int itemResourceId) {
+                                  @NonNull ArrayList<ViewItem> itemsList, int headerResourceId, int itemResourceId) {
         super(ctx, recyclerView, itemsList, headerResourceId, itemResourceId);
         mHeaderResourceId = headerResourceId;
         mItemResourceId = itemResourceId;
@@ -40,7 +40,7 @@ public class NetworkMainMenuAdapter extends FlexibleGridRecyclerAdapter {
 
     @Override
     public RecyclerView.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        if(viewType == BaseViewItem.TYPE_HEADER) {
+        if(viewType == ViewItem.FULL_WIDTH) {
             View v = LayoutInflater.from(parent.getContext())
                     .inflate(mHeaderResourceId, parent, false);
             return new TextHeaderViewHolder(v,mContext);
@@ -53,8 +53,7 @@ public class NetworkMainMenuAdapter extends FlexibleGridRecyclerAdapter {
 
     @Override
     public void onBindViewHolder(RecyclerView.ViewHolder holder, final int position) {
-        Log.d("Bla","Bla");
-        if(isHeaderItem(position)) {
+        if(isFullWidth(position)) {
             if(mList.get(position) instanceof NetworkHeaderViewItem) {
                 ((TextHeaderViewHolder)holder).title.setText(((NetworkHeaderViewItem) mList.get(position)).title);
             }
@@ -83,7 +82,7 @@ public class NetworkMainMenuAdapter extends FlexibleGridRecyclerAdapter {
             Intent mIntent = new Intent(mContext,mClass);
             mContext.startActivity(mIntent);
         } catch(ClassNotFoundException e) {
-            String message = "'" +name+ "'" + this.ACTION_NOT_SUPPORTED;
+            String message = "'" +name+ "'" + ACTION_NOT_SUPPORTED;
             Snackbar.make(parentView,message,Snackbar.LENGTH_LONG).show();
         }
 

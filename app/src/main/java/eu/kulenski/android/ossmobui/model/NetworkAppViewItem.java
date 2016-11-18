@@ -6,7 +6,7 @@ import android.support.annotation.NonNull;
  * Created by Tsvetan.Kulenski on 17.11.2016 г..
  */
 
-public class NetworkAppViewItem extends BasePlainViewItem {
+public class NetworkAppViewItem extends ViewItem {
     public String title;
     public String description;
     public int iconResourceId;
@@ -18,5 +18,10 @@ public class NetworkAppViewItem extends BasePlainViewItem {
         this.description = description;
         this.iconResourceId = iconResourceId;
         this.action = action;
+    }
+
+    @Override
+    public int getItemType() {
+        return ViewItem.FLEXIBLE;
     }
 }

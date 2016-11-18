@@ -5,21 +5,21 @@ import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 
 import java.util.ArrayList;
 
 import eu.kulenski.android.ossmobui.R;
 import eu.kulenski.android.ossmobui.adapters.MainMenuAdapter;
 import eu.kulenski.android.ossmobui.managers.FlexibleGridLayoutManager;
-import eu.kulenski.android.ossmobui.model.BaseViewItem;
 import eu.kulenski.android.ossmobui.model.MainAppViewItem;
 import eu.kulenski.android.ossmobui.model.MainNotificationsViewItem;
-import eu.kulenski.android.ossmobui.model.NetworkAppViewItem;
-import eu.kulenski.android.ossmobui.model.NetworkHeaderViewItem;
+import eu.kulenski.android.ossmobui.model.ViewItem;
 
 public class MainActivity extends AppCompatActivity {
 
-    private ArrayList<BaseViewItem> mList = null;
+    private static final String TAG = MainActivity.class.getName();
+    private ArrayList<ViewItem> mList = null;
     private MainMenuAdapter mAdapter = null;
     private FlexibleGridLayoutManager mLayoutManager = null;
 
@@ -34,10 +34,14 @@ public class MainActivity extends AppCompatActivity {
 
         RecyclerView mRecyclerView = (RecyclerView) findViewById(R.id.recyclerView);
         mLayoutManager = new FlexibleGridLayoutManager(this,getResources().getInteger(R.integer.recycler_subgrid_columns),R.integer.recycler_subgrid_columns);
-        mRecyclerView.setLayoutManager(mLayoutManager);
-        mAdapter = new MainMenuAdapter(getApplicationContext(), mRecyclerView, mList, R.layout.item_main_notification_bar, R.layout.item_main_appcard);
-        mRecyclerView.setAdapter(mAdapter);
-
+        try {
+            mRecyclerView.setLayoutManager(mLayoutManager);
+            mAdapter = new MainMenuAdapter(getApplicationContext(), mRecyclerView, mList, R.layout.item_main_notification_bar, R.layout.item_main_appcard);
+            mRecyclerView.setAdapter(mAdapter);
+        } catch (Exception e) {
+            Log.e(TAG, "Error setting LayoutManager");
+            e.printStackTrace();
+        }
     }
 
     private void generateHeaderItem(@NonNull String title) {
@@ -55,7 +59,4 @@ public class MainActivity extends AppCompatActivity {
         generatePlainItem("Мрежата", "Приложения за работа в мрежата",0,"");
         generatePlainItem("История", "Последни действия",0,"");
     }
-
-
-
 }

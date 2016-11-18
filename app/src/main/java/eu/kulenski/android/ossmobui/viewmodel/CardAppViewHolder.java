@@ -6,6 +6,7 @@ import android.content.Intent;
 import android.support.design.widget.Snackbar;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.widget.CardView;
+import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -16,7 +17,7 @@ import eu.kulenski.android.ossmobui.R;
  * Created by Tsvetan.Kulenski on 17.11.2016 г..
  */
 
-public class CardAppViewHolder extends BaseItemViewHolder {
+public class CardAppViewHolder extends RecyclerView.ViewHolder {
 
     private Context mContext;
 

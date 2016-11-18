@@ -11,9 +11,9 @@ import android.view.ViewGroup;
 import java.util.ArrayList;
 
 
-import eu.kulenski.android.ossmobui.model.BaseViewItem;
 import eu.kulenski.android.ossmobui.model.MainAppViewItem;
 import eu.kulenski.android.ossmobui.model.MainNotificationsViewItem;
+import eu.kulenski.android.ossmobui.model.ViewItem;
 import eu.kulenski.android.ossmobui.viewmodel.CardAppViewHolder;
 import eu.kulenski.android.ossmobui.viewmodel.MainNotificationsViewHolder;
 
@@ -28,7 +28,7 @@ public class MainMenuAdapter extends FlexibleGridRecyclerAdapter {
     private Context mContext;
 
     public MainMenuAdapter(@NonNull Context ctx, @NonNull RecyclerView recyclerView,
-                           @NonNull ArrayList<BaseViewItem> itemsList, int headerResourceId, int itemResourceId) {
+                           @NonNull ArrayList<ViewItem> itemsList, int headerResourceId, int itemResourceId) {
         super(ctx, recyclerView, itemsList, headerResourceId, itemResourceId);
         mHeaderResourceId = headerResourceId;
         mItemResourceId = itemResourceId;
@@ -37,7 +37,7 @@ public class MainMenuAdapter extends FlexibleGridRecyclerAdapter {
 
     @Override
     public RecyclerView.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        if(viewType == BaseViewItem.TYPE_HEADER) {
+        if(viewType == ViewItem.FULL_WIDTH) {
             View v = LayoutInflater.from(parent.getContext())
                     .inflate(mHeaderResourceId, parent, false);
             return new MainNotificationsViewHolder(v,mContext);
@@ -51,7 +51,7 @@ public class MainMenuAdapter extends FlexibleGridRecyclerAdapter {
     @Override
     public void onBindViewHolder(RecyclerView.ViewHolder holder, int position) {
         Log.d("Bla","Bla");
-        if(isHeaderItem(position)) {
+        if(isFullWidth(position)) {
             if(mList.get(position) instanceof MainNotificationsViewItem) {
                 ((MainNotificationsViewHolder)holder).title.setText(((MainNotificationsViewItem) mList.get(position)).title);
             }

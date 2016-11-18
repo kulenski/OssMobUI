@@ -5,21 +5,21 @@ import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 
 import java.util.ArrayList;
 
 import eu.kulenski.android.ossmobui.R;
-import eu.kulenski.android.ossmobui.adapters.MainMenuAdapter;
 import eu.kulenski.android.ossmobui.adapters.NetworkMainMenuAdapter;
 import eu.kulenski.android.ossmobui.managers.FlexibleGridLayoutManager;
-import eu.kulenski.android.ossmobui.model.BaseViewItem;
-import eu.kulenski.android.ossmobui.model.MainAppViewItem;
 import eu.kulenski.android.ossmobui.model.NetworkAppViewItem;
 import eu.kulenski.android.ossmobui.model.NetworkHeaderViewItem;
+import eu.kulenski.android.ossmobui.model.ViewItem;
 
 public class NetworkMainActivity extends AppCompatActivity {
 
-    private ArrayList<BaseViewItem> mList = null;
+    private static final String TAG = NetworkMainActivity.class.getName();
+    private ArrayList<ViewItem> mList = null;
     private NetworkMainMenuAdapter mAdapter = null;
     private FlexibleGridLayoutManager mLayoutManager = null;
 
@@ -32,9 +32,15 @@ public class NetworkMainActivity extends AppCompatActivity {
 
         RecyclerView mRecyclerView = (RecyclerView) findViewById(R.id.recyclerView);
         mLayoutManager = new FlexibleGridLayoutManager(this,getResources().getInteger(R.integer.recycler_subgrid_columns),R.integer.recycler_subgrid_columns);
-        mRecyclerView.setLayoutManager(mLayoutManager);
-        mAdapter = new NetworkMainMenuAdapter(getApplicationContext(), mRecyclerView, mList, R.layout.item_network_textheader, R.layout.item_network_appitem);
-        mRecyclerView.setAdapter(mAdapter);
+
+        try{
+            mRecyclerView.setLayoutManager(mLayoutManager);
+            mAdapter = new NetworkMainMenuAdapter(getApplicationContext(), mRecyclerView, mList, R.layout.item_network_textheader, R.layout.item_network_appitem);
+            mRecyclerView.setAdapter(mAdapter);
+        } catch (Exception e) {
+            Log.d(TAG, "Error setting LayoutManager");
+            e.printStackTrace();
+        }
 
     }
 
